@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>curve animation path in css</title>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        .dot-wrapper {
+            padding: 100px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            animation: xAxis1 2.5s infinite ease-in;
+        }
+
+        .dot::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            animation: yAxis1 2.5s infinite ease-out;
+        }
+
+        @keyframes xAxis1 {
+            50% {
+                animation-timing-function: ease-in;
+                transform: translateX(100px);
+            }
+        }
+
+        @keyframes yAxis1 {
+            50% {
+                animation-timing-function: ease-out;
+                transform: translateY(-100px);
+            }
+        }
+
+        .demo-dot {
+            -webkit-animation: xAxis 2.5s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+            animation: xAxis 2.5s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+        }
+
+        .demo-dot::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            -webkit-animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+            animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+        }
+
+        @-webkit-keyframes yAxis {
+            50% {
+                -webkit-animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+                animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+                -webkit-transform: translateY(-100px);
+                transform: translateY(-100px);
+            }
+        }
+
+        @keyframes yAxis {
+            50% {
+                -webkit-animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+                animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+                -webkit-transform: translateY(-100px);
+                transform: translateY(-100px);
+            }
+        }
+
+        @-webkit-keyframes xAxis {
+            50% {
+                -webkit-animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+                animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+                -webkit-transform: translateX(100px);
+                transform: translateX(100px);
+            }
+        }
+
+        @keyframes xAxis {
+            50% {
+                -webkit-animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+                animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+                -webkit-transform: translateX(100px);
+                transform: translateX(100px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dot-wrapper">
+        <div class="dot"></div>
+    </div>
+    <div class="dot-wrapper">
+        <div class="demo-dot"></div>
+    </div>
+    <p>By
+        <a href="http://tobiasahlin.com/blog/curved-path-animations-in-css/">Tobias</a>
+    </p>
+</body>
+
+</html>
